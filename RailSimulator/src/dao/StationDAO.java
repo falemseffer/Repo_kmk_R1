@@ -5,11 +5,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-
-
-import beans.Canton;
-import beans.Ligne;
 import beans.Station;
 
 public class StationDAO {
@@ -54,8 +49,7 @@ public class StationDAO {
     	Transaction tr=se.beginTransaction();
     	se.update(station);
     	tr.commit();
-    	se.close();
-    	 
+    	se.close();    	 
     }
     
 	@SuppressWarnings("unchecked")

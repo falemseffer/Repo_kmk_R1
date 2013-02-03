@@ -80,12 +80,13 @@ public class StationDAOTest extends TestCase {
 		
 		String nouvNom = JOptionPane.showInputDialog("le nouveau nom ?");
 		String nouvComment = JOptionPane.showInputDialog("Entrer le nouveau commentaire");
-		Station stn = new Station();
-		stn.setNomStation(nouvNom);
-		stn.setCommentaireStation(nouvComment);
+		st.setNomStation(nouvNom);
+		st.setCommentaireStation(nouvComment);
 		//modifie
-		daostation.modifierStation(stn);						
-			assertTrue(daostation.existStation(st));			
+		daostation.modifierStation(st);	
+			
+		assertFalse(nouvNom.equals(testnomS));
+						
 	}
 
 	public void testListerStation() {

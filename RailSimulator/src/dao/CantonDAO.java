@@ -29,12 +29,8 @@ public class CantonDAO {
 	     canton.setNomCanton(nomCanton);
 	     canton.setCommentaireCanton(commentaireCanton);
 	     canton.setLigne(ligne);
-	     canton.setStation(station);
-	   
-	     
-	    
-		  se.save(canton);
-		
+	     canton.setStation(station);  
+	     se.save(canton);
 	     t.commit();
 	     se.close();
 	}
