@@ -7,20 +7,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import beans.Canton;
 import beans.Ligne;
 import beans.Station;
-
 import dao.CantonDAO;
 import dao.LigneDAO;
 import dao.StationDAO;
 
 
-import javax.servlet.http.HttpServlet;
-
 public class CantonControler extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<Canton> listeCanton;
 	private List<Station> listeStation;
 	private CantonDAO canton_dao = new CantonDAO();

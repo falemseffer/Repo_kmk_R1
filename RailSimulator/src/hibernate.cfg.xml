@@ -14,7 +14,7 @@
 
 		<!-- Comportement pour la conservation des tables -->
 		<!-- <property name="hbm2ddl.auto">create</property> -->
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create</property>
 
 
 		<!-- Fichiers à mapper -->

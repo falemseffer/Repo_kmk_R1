@@ -1,14 +1,11 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import beans.Canton;
 import beans.Ligne;
 import beans.Station;
@@ -18,15 +15,14 @@ import dao.StationDAO;
 
 public class StationControler extends HttpServlet {
 
-	private List<Canton> listeCanton;
-	private CantonDAO canton_dao = new CantonDAO();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private StationDAO station_dao = new StationDAO();
 	private List<Ligne> listeLigne;
 	private LigneDAO ligne_dao = new LigneDAO();
-	private Canton canton = new Canton();
-	private Ligne ligne = new Ligne();
 	private Station station = new Station();
-
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

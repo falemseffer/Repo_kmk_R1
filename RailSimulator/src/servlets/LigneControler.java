@@ -2,29 +2,22 @@ package servlets;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import beans.Ligne;
-
 import dao.LigneDAO;
-
-
-
-
-
 
 public class LigneControler extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<Ligne> listeLigne;
 	private LigneDAO ligne_dao = new LigneDAO();
 	private Ligne ligne = new Ligne();
-
-
-
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

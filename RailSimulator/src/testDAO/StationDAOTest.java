@@ -36,8 +36,7 @@ public class StationDAOTest extends TestCase {
 		
 		StationDAO daostation = new StationDAO();
 	
-		
-		
+				
 	public void testCreateStation() {
 		
 		

@@ -2,7 +2,6 @@ package dao;
 
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import beans.Station;
@@ -15,13 +14,20 @@ public class StationDAO {
 
     
     public  void createStation(String nomStation , String commentaireStation) {
-	       
+	      
+		 
 		 se = HibernateUtils.getSession();
 	     Transaction t = se.beginTransaction();
+	    
+	     
 	     station.setNomStation(nomStation);
 	     station.setCommentaireStation(commentaireStation);
-	     station.setIdStation(station.getIdStation());
-	     se.save(station);
+
+	   
+	     
+	    
+		 se.save(station);
+		
 	     t.commit();
 	     se.close();
 	}
@@ -39,7 +45,10 @@ public class StationDAO {
 	public Station getStationByID(int id) {
     	se = HibernateUtils.getSession();
     	se.beginTransaction(); 
-    	station = (Station) se.createQuery("from Station where idStation="+id).uniqueResult();    	
+    	
+    	station = (Station) se.createQuery("from Station where idStation="+id).uniqueResult();
+    	se.close();
+    	
         return station;
     }
 	
@@ -49,38 +58,16 @@ public class StationDAO {
     	Transaction tr=se.beginTransaction();
     	se.update(station);
     	tr.commit();
-    	se.close();    	 
+    	se.close();
+    	 
     }
     
-	@SuppressWarnings("unchecked")
 	public List<Station> listerStation() {
     	se = HibernateUtils.getSession();
-    	se.beginTransaction();  	 
-    
-    	listeStation = se.createQuery("from Station").list();
-    	
-       return listeStation;
+    	se.beginTransaction();  	 	
+    	listeStation = se.createQuery("from Station").list();   	
+        return listeStation;
     }
-	
-		@SuppressWarnings("unchecked")
-		public int derniereStation(Station s) {
-		se = HibernateUtils.getSession();
-		se.beginTransaction();
-		 listeStation = se.createQuery("from Station").list();
-		//return listeStation.get(3).getIdStation() ;
-		return listeStation.get(listeStation.size()-1).getIdStation();
-		//return (q.uniqueResult() != null);
-		}
-		
-		
-		public boolean existStation(Station s) {
-		se = HibernateUtils.getSession();
-		se.beginTransaction();
-			Query q = se.createQuery("select idStation from Station where nomStation = :nom").setParameter("nom", s.getNomStation());
-		//return listeStation.get(3).getIdStation() ;
-	
-		return (q.uniqueResult() != null);
-		}
-		
+    
     
 }
