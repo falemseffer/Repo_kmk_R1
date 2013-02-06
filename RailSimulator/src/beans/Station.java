@@ -23,7 +23,18 @@ public class Station {
 	
 	@OneToMany(mappedBy="station")
 	private List<Canton> cantonlist;
+	
+	public Station() {
+		super();
+		
+	}
 
+	public Station(String nomStation, String commentaireStation) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.nomStation=nomStation;
+		this.commentaireStation=commentaireStation;
+	}
 	public Integer getIdStation() {
 		return idStation;
 	}

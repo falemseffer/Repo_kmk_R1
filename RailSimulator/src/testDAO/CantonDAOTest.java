@@ -15,12 +15,6 @@ import junit.framework.TestCase;
  * @author faycallemseffer
  * Test unitaire DAO Canton 
  * 
- * La même chose, (n'est pas complet) 
- * 
- * Deux test qui marche (creer et supprimer)
- * 
- * le reste viendra après
- * 
  *
  */
 
@@ -35,13 +29,12 @@ public class CantonDAOTest extends TestCase {
 	
 	public void testCreateCanton() {
 		
-		 testnomC = JOptionPane.showInputDialog("Entrer le nom du canton ");
-		 testcommentC = JOptionPane.showInputDialog("Entrer le commentaire");
+		 testnomC = "creationStation";
+		 testcommentC = "TestCreationStation";
 				
 		daocanton.createCanton(testnomC, testcommentC, l, s);
 		ct.setNomCanton(testnomC);
 		ct.setCommentaireCanton(testcommentC);		
-
 		assertTrue(daocanton.existCanton(ct));
 	}
 

@@ -10,20 +10,6 @@ import beans.Station;
 import junit.framework.TestCase;
 
 /**
- * @author faycallemseffer
- * 
- * Ce sont les test Unitaires du DAO Station 
- * 	Remarque : la création de deux stations indentique n'est pas possible
- * Il faut pensé à modifier dans votre base, la table station (Attribut nomstation)
- * 
- * il faut le rendre unique 
- * 
- * ensuite vous suivez les insctruction qui vous sont proposées pour mieux tester
- * 
- * 			Bon courage 
- * 
- * Cette version n'est pas complète, il manque testafficher et modifier
- * sont en cours d'implementation
  * **/
 
 

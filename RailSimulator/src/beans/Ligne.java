@@ -30,6 +30,14 @@ public class Ligne  {
 	
 	public Ligne() {
 		// TODO Auto-generated constructor stub
+		super();
+	}
+
+	public Ligne(String nomLigne, String commentaire) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.nomLigne=nomLigne;
+		this.commentaire=commentaire;
 	}
 
 	public Integer getIdLigne() {

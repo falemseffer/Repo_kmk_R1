@@ -11,16 +11,6 @@ import junit.framework.TestCase;
 
 /****
  * 
- * @author faycallemseffer
- * Test unitaire DAO Ligne 
- * 
- * La même chose, (n'est pas complet) 
- * 
- * Deux test qui marche (creer et supprimer)
- * 
- * le reste viendra après
- * 
- *
  */
 public class LigneDAOTest extends TestCase {
 

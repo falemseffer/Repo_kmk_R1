@@ -15,19 +15,11 @@ public class StationDAO {
     
     public  void createStation(String nomStation , String commentaireStation) {
 	      
-		 
 		 se = HibernateUtils.getSession();
-	     Transaction t = se.beginTransaction();
-	    
-	     
+	     Transaction t = se.beginTransaction();    
 	     station.setNomStation(nomStation);
 	     station.setCommentaireStation(commentaireStation);
-
-	   
-	     
-	    
 		 se.save(station);
-		
 	     t.commit();
 	     se.close();
 	}
@@ -44,11 +36,9 @@ public class StationDAO {
     
 	public Station getStationByID(int id) {
     	se = HibernateUtils.getSession();
-    	se.beginTransaction(); 
-    	
+    	se.beginTransaction();   	
     	station = (Station) se.createQuery("from Station where idStation="+id).uniqueResult();
     	se.close();
-    	
         return station;
     }
 	
@@ -62,6 +52,7 @@ public class StationDAO {
     	 
     }
     
+	@SuppressWarnings("unchecked")
 	public List<Station> listerStation() {
     	se = HibernateUtils.getSession();
     	se.beginTransaction();  	 	

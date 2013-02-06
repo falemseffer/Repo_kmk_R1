@@ -39,7 +39,15 @@ import javax.persistence.Table;
 		private Station station;
 
 		
-		
+		public Canton() {
+			// TODO Auto-generated constructor stub
+			super();
+		}
+		public Canton(String nomCanton , String commentaireCanton){
+			super();
+			this.nomCanton = nomCanton;
+			this.commentaireCanton = commentaireCanton ;
+		}
 		
 		public Integer getIdCanton() {
 			return idCanton;
