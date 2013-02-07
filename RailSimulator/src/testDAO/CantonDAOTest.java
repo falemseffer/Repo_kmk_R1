@@ -4,10 +4,12 @@ import javax.swing.JOptionPane;
 
 import org.hibernate.mapping.List;
 
+import dao.CantonDAO;
+
 import beans.Canton;
 import beans.Ligne;
 import beans.Station;
-import dao.CantonDAO;
+
 import junit.framework.TestCase;
 
 /****
@@ -31,18 +33,23 @@ public class CantonDAOTest extends TestCase {
 		
 		 testnomC = "creationStation";
 		 testcommentC = "TestCreationStation";
-				
-		daocanton.createCanton(testnomC, testcommentC, l, s);
+			
 		ct.setNomCanton(testnomC);
-		ct.setCommentaireCanton(testcommentC);		
+		ct.setCommentaireCanton(testcommentC);
+		
+		daocanton.createCanton(testnomC, testcommentC, l, s);
+		
+		ct.setNomCanton(testnomC);
+		ct.setCommentaireCanton(testcommentC);	
+		
 		assertTrue(daocanton.existCanton(ct));
 	}
 
 	public void testSupprimerCanton() {
 
 	
-		testnomC = JOptionPane.showInputDialog("creer un canton pour tester la suppression ensuite, le nom ?");
-		testcommentC = JOptionPane.showInputDialog("Entrer le commentaire");
+		testnomC = "test";
+		testcommentC = "test";
 		
 		 daocanton.createCanton(testnomC, testcommentC,l,s);
 		JOptionPane.showMessageDialog(null, "Merci de cliquer pour supp","supp", JOptionPane.INFORMATION_MESSAGE);

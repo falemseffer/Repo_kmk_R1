@@ -1,6 +1,8 @@
 package dao;
 
 import java.util.*;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import beans.Ligne;
@@ -71,6 +73,24 @@ public class LigneDAO {
     	se.close();
     	 
     }
+    
+
+	@SuppressWarnings("unchecked")
+	public int derniereLigne(Ligne l) {
+	se = HibernateUtils.getSession();
+	se.beginTransaction();
+	 listeLigne = se.createQuery("from Station").list();
+	//return listeStation.get(3).getIdStation() ;
+	return listeLigne.get(listeLigne.size()-1).getIdLigne();
+	//return (q.uniqueResult() != null);
+	}
+    
+	public boolean existLigne(Ligne l) {
+	se = HibernateUtils.getSession();
+	se.beginTransaction();
+		Query q = se.createQuery("select idLigne from Ligne where nomLigne = :nom").setParameter("nom", l.getNomLigne());
+	return (q.uniqueResult() != null);
+	}
 	
 	
 }

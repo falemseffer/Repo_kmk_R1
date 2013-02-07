@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import beans.Station;
@@ -60,5 +61,27 @@ public class StationDAO {
         return listeStation;
     }
     
+	@SuppressWarnings("unchecked")
+	public int derniereStation(Station s) {
+	se = HibernateUtils.getSession();
+	se.beginTransaction();
+	 listeStation = se.createQuery("from Station").list();
+	//return listeStation.get(3).getIdStation() ;
+	return listeStation.get(listeStation.size()-1).getIdStation();
+	//return (q.uniqueResult() != null);
+	}
+	
+
+
+	public boolean existStation(Station st) {
+		// TODO Auto-generated method stub
+		se = HibernateUtils.getSession();
+		se.beginTransaction();
+			Query q = se.createQuery("select idStation from Station where nomStation = :nom").setParameter("nom", st.getNomStation());
+		//return listeStation.get(3).getIdStation() ;
+
+		return (q != null);
+	}
+	
     
 }

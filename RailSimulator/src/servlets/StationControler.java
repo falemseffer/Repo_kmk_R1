@@ -74,8 +74,6 @@ public class StationControler extends HttpServlet {
 			if (erreurGenerale == false) {
 
 
-
-
 				station_dao.createStation(nomStation, commentaireStation); 
 				listeLigne= ligne_dao.listerLigne();
 

@@ -1,6 +1,8 @@
 package dao;
 
 import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import beans.Canton;
@@ -18,17 +20,12 @@ public class CantonDAO {
 		 
 		 se = HibernateUtils.getSession();
 	     Transaction t = se.beginTransaction();
-	     Canton canton = new Canton();
-	     
+	     Canton canton = new Canton();	     
 	     canton.setNomCanton(nomCanton);
 	     canton.setCommentaireCanton(commentaireCanton);
 	     canton.setLigne(ligne);
 	     canton.setStation(station);
-	   
-	     
-	    
-		  se.save(canton);
-		
+	     se.save(canton);		
 	     t.commit();
 	     se.close();
 	}
@@ -70,5 +67,19 @@ public class CantonDAO {
     	se.close();
     	 
     }
-
+    
+	@SuppressWarnings("unchecked")
+	public int dernierCanton(Canton c) {
+	se = HibernateUtils.getSession();
+	se.beginTransaction();
+	 listeCanton = se.createQuery("from Canton").list();
+	return listeCanton.get(listeCanton.size()-1).getIdCanton();
+	}
+      
+	public boolean existCanton(Canton c) {
+	se = HibernateUtils.getSession();
+	se.beginTransaction();
+		Query q = se.createQuery("select idCanton from Canton where nomCanton = :nom").setParameter("nom", c.getNomCanton());
+	return (q.uniqueResult() != null);
+	}
 }

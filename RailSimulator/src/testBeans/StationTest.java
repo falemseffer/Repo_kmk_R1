@@ -23,15 +23,7 @@ public class StationTest extends TestCase {
 		public void testStation() {
 		assertNotNull("L'instance est crŽŽe", station);
 		}
-	/**
-	public void testGetIdStation() {
-		fail("Not yet implemented");
-	}
 
-	public void testSetIdStation() {
-		fail("Not yet implemented");
-	}
-*/
 	public void testGetNomStation() {
 		assertEquals("Est ce que nom est correct", "nom1", station.getNomStation());
 	}

@@ -22,15 +22,7 @@ public class LigneTest extends TestCase {
 	public void testLigne() {
 		assertNotNull("L'instance est crŽŽe", ligne);
 	}
-/**
-	public void testGetIdLigne() {
-		fail("Not yet implemented");
-	}
 
-	public void testSetIdLigne() {
-		fail("Not yet implemented");
-	}
-*/
 	public void testGetNomLigne() {
 		assertEquals("Est ce que nom est correct", "nom1", ligne.getNomLigne());
 		
@@ -51,13 +43,5 @@ public class LigneTest extends TestCase {
 		assertEquals("Est ce que nom est correct", "comment2", ligne.getCommentaire());
 	
 	}
-/**
-	public void testGetCantonlist() {
-		fail("Not yet implemented");
-	}
 
-	public void testSetCantonlist() {
-		fail("Not yet implemented");
-	}
-**/
 }
