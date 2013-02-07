@@ -6,10 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import beans.Canton;
 import beans.Ligne;
 import beans.Station;
-import dao.CantonDAO;
 import dao.LigneDAO;
 import dao.StationDAO;
 
@@ -31,8 +29,6 @@ public class StationControler extends HttpServlet {
 
 		if(action.equals("Annuler")){
 
-
-
 			listeLigne = ligne_dao.listerLigne();
 			request.logout();
 			request.setAttribute("listeLigne",listeLigne);
@@ -51,11 +47,6 @@ public class StationControler extends HttpServlet {
 			String commentaireStation = request.getParameter("commentaireStation");
 
 			String idCanton[] = request.getParameterValues("canton"); 
-
-
-
-
-
 
 			if ( nomStation.trim().isEmpty()) {
 

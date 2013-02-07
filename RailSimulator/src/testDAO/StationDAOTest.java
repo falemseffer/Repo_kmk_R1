@@ -2,6 +2,8 @@ package testDAO;
 
 
 
+
+
 import javax.swing.JOptionPane;
 
 import dao.StationDAO;
@@ -13,88 +15,87 @@ import junit.framework.TestCase;
 
 
 public class StationDAOTest extends TestCase {
-
 		
 		String testnomS ;
 		String testcommentS ;
-		Station st = new Station();
-		
-		StationDAO daostation = new StationDAO();
-		
+		Station st = new Station();		
+		StationDAO daostation = new StationDAO();	
 		boolean res ; 
 	
-/**				
-	public void testCreateStation() {
-		
-		
-		String testnomS = "testCrea";
-		String testcommentS = "testcrea";
-		
+			
+	public void testCreateStation() {	
+			
+		String testnomS = daostation.generateRandom();
+		String testcommentS = daostation.generateRandom() ;
+		st = new Station(testnomS, testcommentS);
 		//Je cree mon instance dans la base 
 		daostation.createStation(testnomS, testcommentS);
-		
-		st.setNomStation(testnomS);
-		st.setCommentaireStation(testcommentS);
-		
 		//une instance de verif
-		 res = daostation.existStation(st);
-		 
+		 res = daostation.existStation(st);	
+		 System.out.println(res);
 		 assertTrue(res);
 		
 	}
 
 	public void testSupprimerStation() {
-		String testnomS ="testSupprimer1";
-		String testcommentS ="testSuprimer1";
-		
-		daostation.createStation(testnomS, testcommentS);
-		
-		int der = daostation.derniereStation(st) ;
-		
-     	daostation.supprimerStation(der);
-     	st.setIdStation(der);
-  
-      	boolean res = daostation.existStation(st);
+		//initialise deux chaines pour la création d'une nouvelle station qui sera suprimer après
+		String testnomS = daostation.generateRandom();
+		String testcommentS = daostation.generateRandom();
+		st = new Station(testnomS, testcommentS);
+		daostation.createStation(testnomS,testcommentS);		
+		st = new Station(testnomS,testcommentS);
+		int der = daostation.derniereStation() ;	
+		st.setIdStation(der);
+     	daostation.supprimerStation(der);  	  
+     	res = daostation.existStation(st);     	
       	assertTrue(res);
 		
 	}
-	**/
-	/**
+	
+	public void testListerStation() {
+		
+		String testnomL = daostation.generateRandom();
+	String testcommentL = daostation.generateRandom();
+	
+	daostation.createStation(testnomL, testcommentL);	
+	
+	assertNotNull(daostation.listerStation());
+}
+
+/**
 	public void testGetStationByID() {
 		
-		assertNotNull(st);
+		int sta = daostation.getStationByID(st.getIdStation()).getIdStation();
+		
+		assertEquals(st.getIdStation(),""+sta);
 	}
-**/
 	
+**/	
 	public void testModifierStation() {
 		
 		//insert dans la base
-		String testnomS = JOptionPane.showInputDialog("creez pour modifier ensuite");
-		String testcommentS = JOptionPane.showInputDialog("Entrer le commentaire");
+		String testnomS = daostation.generateRandom();
+		String testcommentS = daostation.generateRandom();
 		
 		daostation.createStation(testnomS, testcommentS);
 		st.setNomStation(testnomS);
 		st.setCommentaireStation(testcommentS);
 		
-		String nouvNom = JOptionPane.showInputDialog("le nouveau nom ?");
-		String nouvComment = JOptionPane.showInputDialog("Entrer le nouveau commentaire");
+		String nouvNom = daostation.generateRandom();
+		String nouvComment = daostation.generateRandom();	
+		Station stn = new Station(nouvNom,nouvComment);
+		st =stn ;
+		//st.setNomStation(nouvNom);
+		//st.setCommentaireStation(nouvComment);
 		
-	
-		st.setNomStation(nouvNom);
-		st.setCommentaireStation(nouvComment);
-		//modifie
-		daostation.modifierStation(st);
+		daostation.modifierStation(st);		
 			
-			
-			assertTrue(daostation.existStation(st));
+		assertEquals(st, stn);
+		//	assertFalse(daostation.existStation(st));		
 						
 	}
-/**
-	public void testListerStation() {
-		
-		List li = (List) daostation.listerStation();
-		//assertNotNull(daostation.listerStation());
-		assertEquals(li, daostation.listerStation());
-	}**/
+
+
+
 }
 

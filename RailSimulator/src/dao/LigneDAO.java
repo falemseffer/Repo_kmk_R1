@@ -1,5 +1,6 @@
 package dao;
 
+import java.security.SecureRandom;
 import java.util.*;
 
 import org.hibernate.Query;
@@ -36,10 +37,7 @@ public class LigneDAO {
 	public List<Ligne> listerLigne() {
     	se = HibernateUtils.getSession();
     	se.beginTransaction();  	 	
-    	listeLigne = se.createQuery("from Ligne").list();
-    	
-    	
-    	
+    	listeLigne = se.createQuery("from Ligne").list();    	
         return listeLigne;
     }
 	
@@ -79,7 +77,7 @@ public class LigneDAO {
 	public int derniereLigne(Ligne l) {
 	se = HibernateUtils.getSession();
 	se.beginTransaction();
-	 listeLigne = se.createQuery("from Station").list();
+	 listeLigne = se.createQuery("from Ligne").list();
 	//return listeStation.get(3).getIdStation() ;
 	return listeLigne.get(listeLigne.size()-1).getIdLigne();
 	//return (q.uniqueResult() != null);
@@ -89,8 +87,32 @@ public class LigneDAO {
 	se = HibernateUtils.getSession();
 	se.beginTransaction();
 		Query q = se.createQuery("select idLigne from Ligne where nomLigne = :nom").setParameter("nom", l.getNomLigne());
-	return (q.uniqueResult() != null);
+		if(q == null){
+			System.out.println("false");
+			return false ;
+			
+		}
+		else {
+			System.out.println("true");
+			return true ;				
+			
+		}
 	}
+	
+	public  String generateRandom()
+	  {
+		     Random rd = new SecureRandom();
+	      
+	      String letters = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789+@";
+
+	      String pw = "";
+	      for (int i=0; i<8; i++)
+	      {
+	          int index = (int)(rd.nextDouble()*letters.length());
+	          pw += letters.substring(index, index+1);
+	      }
+	      return pw;
+	  }
 	
 	
 }
