@@ -5,8 +5,14 @@ import dao.StationDAO;
 import beans.Station;
 import junit.framework.TestCase;
 
-/**
- * **/
+
+/****
+ * 
+ * @author faycallemseffer
+ * Test unitaire DAO Station 
+ * 
+ *
+ */
 
 
 public class StationDAOTest extends TestCase {
@@ -56,18 +62,10 @@ public class StationDAOTest extends TestCase {
 		assertNotNull(daostation.listerStation());
 }
 
-/**
-	public void testGetStationByID() {
-		
-		int sta = daostation.getStationByID(st.getIdStation()).getIdStation();
-		
-		assertEquals(st.getIdStation(),""+sta);
-	}
-	
-**/	
+
 	public void testModifierStation() {
 		
-		//insert dans la base
+		
 		String testnomS = daostation.generateRandom();
 		String testcommentS = daostation.generateRandom();
 		
@@ -80,8 +78,7 @@ public class StationDAOTest extends TestCase {
 		st.setCommentaireStation(nouvComment);
 		st.setIdStation(daostation.derniereStation());
 		daostation.modifierStation(st);				
-		assertNotSame(testnomS, st.getNomStation());
-			
+		assertNotSame(testnomS, st.getNomStation());			
 						
 	}
 

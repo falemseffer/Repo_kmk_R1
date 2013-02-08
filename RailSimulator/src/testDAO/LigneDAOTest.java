@@ -6,8 +6,13 @@ import dao.LigneDAO;
 import dao.StationDAO;
 import junit.framework.TestCase;
 
+
 /****
  * 
+ * @author faycallemseffer
+ * Test unitaire DAO Ligne 
+ * 
+ *
  */
 public class LigneDAOTest extends TestCase {
 
@@ -37,8 +42,7 @@ public class LigneDAOTest extends TestCase {
 	
 	public void testSupprimerLigne() {
 		String testnomL = daoligne.generateRandom();
-		String testcommentL = daoligne.generateRandom();
-		
+		String testcommentL = daoligne.generateRandom();		
 		daoligne.createLigne(testnomL, testcommentL);
 		
 		int der = daoligne.derniereLigne(lg) ;
@@ -55,12 +59,7 @@ public class LigneDAOTest extends TestCase {
 		daoligne.createLigne(testnomL, testcommentL);		
 		assertNotNull(daoligne.listerLigne());
 	}
-	/**
-	public void testGetLigneByID() {
-		assertNotNull(lg);
-		
-	}
-**/
+
 	public void testModifierLigne() {
 				//insert dans la base
 		String testnomL = daoligne.generateRandom();

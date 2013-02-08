@@ -1,8 +1,5 @@
 package testDAO;
 
-import javax.swing.JOptionPane;
-
-import org.hibernate.mapping.List;
 
 import dao.CantonDAO;
 import dao.LigneDAO;
