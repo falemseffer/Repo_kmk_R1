@@ -1,11 +1,6 @@
 package testDAO;
 
 
-
-
-
-import javax.swing.JOptionPane;
-
 import dao.StationDAO;
 import beans.Station;
 import junit.framework.TestCase;
@@ -32,7 +27,6 @@ public class StationDAOTest extends TestCase {
 		daostation.createStation(testnomS, testcommentS);
 		//une instance de verif
 		 res = daostation.existStation(st);	
-		 System.out.println(res);
 		 assertTrue(res);
 		
 	}
@@ -54,12 +48,12 @@ public class StationDAOTest extends TestCase {
 	
 	public void testListerStation() {
 		
-		String testnomL = daostation.generateRandom();
-	String testcommentL = daostation.generateRandom();
+		String testnomS = daostation.generateRandom();
+		String testcommentS = daostation.generateRandom();
 	
-	daostation.createStation(testnomL, testcommentL);	
+		daostation.createStation(testnomS, testcommentS);	
 	
-	assertNotNull(daostation.listerStation());
+		assertNotNull(daostation.listerStation());
 }
 
 /**
@@ -78,20 +72,16 @@ public class StationDAOTest extends TestCase {
 		String testcommentS = daostation.generateRandom();
 		
 		daostation.createStation(testnomS, testcommentS);
-		st.setNomStation(testnomS);
-		st.setCommentaireStation(testcommentS);
 		
 		String nouvNom = daostation.generateRandom();
 		String nouvComment = daostation.generateRandom();	
-		Station stn = new Station(nouvNom,nouvComment);
-		st =stn ;
-		//st.setNomStation(nouvNom);
-		//st.setCommentaireStation(nouvComment);
-		
-		daostation.modifierStation(st);		
+				
+		st.setNomStation(nouvNom);
+		st.setCommentaireStation(nouvComment);
+		st.setIdStation(daostation.derniereStation());
+		daostation.modifierStation(st);				
+		assertNotSame(testnomS, st.getNomStation());
 			
-		assertEquals(st, stn);
-		//	assertFalse(daostation.existStation(st));		
 						
 	}
 

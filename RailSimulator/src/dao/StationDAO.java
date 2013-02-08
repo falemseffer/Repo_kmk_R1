@@ -54,7 +54,7 @@ public class StationDAO {
     	Transaction tr=se.beginTransaction();
     	se.update(station);
     	tr.commit();
-    	se.close();
+    	//se.close();
     	 
     }
     
@@ -93,8 +93,7 @@ public class StationDAO {
 			}		
 	}
 	 
-	public  String generateRandom()
-	  {
+	public  String generateRandom() {
 		     Random rd = new SecureRandom();
 	      
 	      String letters = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789+@";

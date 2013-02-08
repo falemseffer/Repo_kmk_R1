@@ -1,12 +1,7 @@
 package testDAO;
 
-import javax.swing.JOptionPane;
-
-import org.hibernate.mapping.List;
 import org.hibernate.validator.AssertTrue;
-
 import beans.Ligne;
-import beans.Station;
 import dao.LigneDAO;
 import dao.StationDAO;
 import junit.framework.TestCase;
@@ -31,13 +26,11 @@ public class LigneDAOTest extends TestCase {
 		String testnomL = daoligne.generateRandom();
 		String testcommentL = daoligne.generateRandom() ;
 		lg = new Ligne(testnomL, testcommentL);
-		//Je cree mon instance dans la base 
+
 		daoligne.createLigne(testnomL, testcommentL);
-		//une instance de verif
-	
-		 res = daoligne.existLigne(lg);	
-		 
-		 System.out.println(res);
+		
+		res = daoligne.existLigne(lg);			 
+		
 		 assertTrue(res);
 		 
 	} 
@@ -59,10 +52,7 @@ public class LigneDAOTest extends TestCase {
 		
 		String testnomL = daoligne.generateRandom();
 		String testcommentL = daoligne.generateRandom();
-		
-		daoligne.createLigne(testnomL, testcommentL);
-	
-		
+		daoligne.createLigne(testnomL, testcommentL);		
 		assertNotNull(daoligne.listerLigne());
 	}
 	/**
@@ -70,9 +60,22 @@ public class LigneDAOTest extends TestCase {
 		assertNotNull(lg);
 		
 	}
-
+**/
 	public void testModifierLigne() {
-		fail("Not yet implemented");
+				//insert dans la base
+		String testnomL = daoligne.generateRandom();
+		String testcommentL = daoligne.generateRandom();
+		
+		daoligne.createLigne(testnomL, testcommentL);
+		
+		String nouvNom = daoligne.generateRandom();
+		String nouvComment = daoligne.generateRandom();	
+				
+		lg.setNomLigne(nouvNom);
+		lg.setCommentaire(nouvComment);
+		lg.setIdLigne(daoligne.derniereLigne(lg));
+		daoligne.modifierLigne(lg);				
+		assertNotSame(testnomL, lg.getNomLigne());
 	}
-**/	
+
 }

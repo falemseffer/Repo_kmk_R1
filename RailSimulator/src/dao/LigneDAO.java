@@ -23,12 +23,7 @@ public class LigneDAO {
 	     Ligne ligne = new Ligne();
 	     ligne.setNomLigne(nomLigne);
 	     ligne.setCommentaire(commentaireLigne);
-	   
-	      
-	      
-	     se.save(ligne);
-		
-		
+	     se.save(ligne);		
 	     t.commit();
 	     se.close();
 	}
@@ -88,12 +83,12 @@ public class LigneDAO {
 	se.beginTransaction();
 		Query q = se.createQuery("select idLigne from Ligne where nomLigne = :nom").setParameter("nom", l.getNomLigne());
 		if(q == null){
-			System.out.println("false");
+			
 			return false ;
 			
 		}
 		else {
-			System.out.println("true");
+		
 			return true ;				
 			
 		}

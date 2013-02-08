@@ -12,11 +12,6 @@ import beans.Ligne;
 
 import dao.LigneDAO;
 
-
-
-
-
-
 public class LigneControler extends HttpServlet {
 
 	/**

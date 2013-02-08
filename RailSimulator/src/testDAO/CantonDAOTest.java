@@ -5,6 +5,8 @@ import javax.swing.JOptionPane;
 import org.hibernate.mapping.List;
 
 import dao.CantonDAO;
+import dao.LigneDAO;
+import dao.StationDAO;
 
 import beans.Canton;
 import beans.Ligne;
@@ -26,25 +28,33 @@ public class CantonDAOTest extends TestCase {
 	String testcommentC ;
 	Canton ct = new Canton();	
 	CantonDAO daocanton = new CantonDAO();
-	Ligne l = new Ligne();
-	Station s = new Station();
+	LigneDAO daoligne = new LigneDAO();
+	StationDAO daostation = new StationDAO();
+	Ligne l ;
+	Station s ;
+	boolean res ; 
 	
 	public void testCreateCanton() {
 		
-		 testnomC = "creationStation";
-		 testcommentC = "TestCreationStation";
-			
-		ct.setNomCanton(testnomC);
-		ct.setCommentaireCanton(testcommentC);
+		String testnomL = daoligne.generateRandom();
+		String testcommentL = daoligne.generateRandom() ;
+		l = new Ligne(testnomL, testcommentL);
+		daoligne.createLigne(testnomL, testcommentL);
 		
+		String testnomS = daostation.generateRandom();
+		String testcommentS = daostation.generateRandom() ;
+		s = new Station(testnomS, testcommentS);
+		daostation.createStation(testnomS, testcommentS);
+		
+		String testnomC = daocanton.generateRandom();
+		String testcommentC = daocanton.generateRandom() ;					
 		daocanton.createCanton(testnomC, testcommentC, l, s);
-		
-		ct.setNomCanton(testnomC);
-		ct.setCommentaireCanton(testcommentC);	
-		
-		assertTrue(daocanton.existCanton(ct));
-	}
 
+		res = daocanton.existCanton(ct);			 
+		
+		 assertTrue(res);
+	}
+/**
 	public void testSupprimerCanton() {
 
 	
@@ -72,5 +82,5 @@ public class CantonDAOTest extends TestCase {
 	public void testModifierCanton() {
 		fail("Not yet implemented");
 	}
-
+**/
 }

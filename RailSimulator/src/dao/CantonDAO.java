@@ -1,6 +1,8 @@
 package dao;
 
+import java.security.SecureRandom;
 import java.util.List;
+import java.util.Random;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -15,8 +17,7 @@ public class CantonDAO {
 	private List<Canton> listeCanton;
     private Canton canton;    
     
-    public  void createCanton(String nomCanton , String commentaireCanton, Ligne ligne, Station station ) {
-	      
+    public  void createCanton(String nomCanton , String commentaireCanton, Ligne ligne, Station station ) {	      
 		 
 		 se = HibernateUtils.getSession();
 	     Transaction t = se.beginTransaction();
@@ -80,6 +81,29 @@ public class CantonDAO {
 	se = HibernateUtils.getSession();
 	se.beginTransaction();
 		Query q = se.createQuery("select idCanton from Canton where nomCanton = :nom").setParameter("nom", c.getNomCanton());
-	return (q.uniqueResult() != null);
+
+		if(q == null){
+				
+				return false ;
+				
+			}
+			else {
+			
+				return true ;				
+				
+			}
 	}
+	public  String generateRandom() {
+	     Random rd = new SecureRandom();
+     
+     String letters = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789+@";
+
+     String pw = "";
+     for (int i=0; i<8; i++)
+     {
+         int index = (int)(rd.nextDouble()*letters.length());
+         pw += letters.substring(index, index+1);
+     }
+     return pw;
+ }
 }
